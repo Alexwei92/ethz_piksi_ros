@@ -41,7 +41,7 @@ from sbp.mag import SBP_MSG_MAG_RAW, MsgMagRaw
 # At the moment importing 'sbp.version' module causes ValueError: Cannot find the version number!
 # import sbp.version
 # networking stuff
-import UdpHelpers
+import piksi_multi_rtk_ros.UdpHelpers as UdpHelpers
 import time
 import subprocess
 import re
@@ -51,7 +51,7 @@ import collections
 
 
 class PiksiMulti:
-    LIB_SBP_VERSION_MULTI = '2.4.1'  # SBP version used for Piksi Multi.
+    LIB_SBP_VERSION_MULTI = '2.7.4'  # SBP version used for Piksi Multi.
 
     # Geodetic Constants.
     kSemimajorAxis = 6378137
@@ -434,6 +434,7 @@ class PiksiMulti:
             ping = subprocess.Popen(command, stdout=subprocess.PIPE)
 
             out, error = ping.communicate()
+            out = str(out)
             # Search for 'min/avg/max/mdev' round trip delay time (rtt) numbers.
             matcher = re.compile("(\d+.\d+)/(\d+.\d+)/(\d+.\d+)/(\d+.\d+)")
 
@@ -1067,7 +1068,7 @@ class PiksiMulti:
         command = ["pip", "show", "sbp"]
         pip_show_output = subprocess.Popen(command, stdout=subprocess.PIPE)
         out, error = pip_show_output.communicate()
-
+        out = str(out)
         # Search for version number, output assumed in the form "Version: X.X.X"
         version_output = re.search("Version: \d+.\d+.\d+", out)
 
