@@ -60,6 +60,7 @@ add_service_files(
     SettingsWrite.srv
     SettingsReadReq.srv
     SettingsReadResp.srv
+    RecordGPS.srv
 )
 
 ## Generate added messages and services with any dependencies listed here

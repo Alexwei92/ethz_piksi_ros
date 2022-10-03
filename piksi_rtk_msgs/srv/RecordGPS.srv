@@ -1,0 +1,3 @@
+float64 period # time period to record the data
+---
+bool success # indicate successful run of triggered service

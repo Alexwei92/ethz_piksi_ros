@@ -21,4 +21,5 @@ geodetic_survey_bags/*.bag
 /kml/*
 
 .vscode/
+data/
 
